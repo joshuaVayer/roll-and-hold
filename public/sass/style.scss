@@ -1,9 +1,15 @@
 /*Colors*/
 $main: #eb4d4c;
 $white: #ffffff;
-$grey: #f7f7f7;
+$lightgrey: #f7f7f7;
+$textDark: #494949;
 /*Font*/
-
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700&display=swap");
+* {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  color: $textDark;
+}
 .wrapper {
   width: 100vw;
   height: 100vh;
@@ -16,15 +22,41 @@ $grey: #f7f7f7;
   &-details {
     width: 50%;
     margin: auto;
+    h2 {
+      font-weight: 100;
+      font-size: 4vw;
+      letter-spacing: 0.3vw;
+    }
+    p {
+      font-size: 6vw;
+      font-weight: 100;
+      color: $main;
+    }
   }
   &-hand {
     width: 25%;
     margin: auto;
     background-color: $main;
-
+    h4 {
+      font-size: 1vw;
+      letter-spacing: 0.2vw;
+      margin-bottom: 0;
+    }
+    p {
+      font-size: 3vw;
+      font-weight: 100;
+      color: $white;
+      margin-bottom: 1vh;
+    }
   }
   &__active {
-    background-color: $grey;
+    background-color: $lightgrey;
+    h2 {
+      font-weight: 300;
+    }
+    p {
+      font-weight: 300;
+    }
   }
 }
 
@@ -37,17 +69,28 @@ $grey: #f7f7f7;
   .option {
     width: 50%;
     margin: auto;
+    button {
+      letter-spacing: 0.2vw;
+      font-size: 1vw;
+      i{
+        color: $main;
+        font-weight: 300;
+        font-size: 1.3vw;
+        margin-right: 0.7vw;
+      }
+    }
   }
 }
 
 .line {
   &1 {
     height: 20vh;
+    padding-top: 2vh;
   }
   &2 {
     height: 50vh;
   }
   &3 {
-    height: 12.5vh;
+    min-height: 12.5vh;
   }
 }

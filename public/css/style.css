@@ -1,5 +1,12 @@
 /*Colors*/
 /*Font*/
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700&display=swap");
+* {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  color: #494949;
+}
+
 .wrapper {
   width: 100vw;
   height: 100vh;
@@ -14,13 +21,40 @@
   width: 50%;
   margin: auto;
 }
+.player-details h2 {
+  font-weight: 100;
+  font-size: 4vw;
+  letter-spacing: 0.3vw;
+}
+.player-details p {
+  font-size: 6vw;
+  font-weight: 100;
+  color: #eb4d4c;
+}
 .player-hand {
   width: 25%;
   margin: auto;
   background-color: #eb4d4c;
 }
+.player-hand h4 {
+  font-size: 1vw;
+  letter-spacing: 0.2vw;
+  margin-bottom: 0;
+}
+.player-hand p {
+  font-size: 3vw;
+  font-weight: 100;
+  color: #ffffff;
+  margin-bottom: 1vh;
+}
 .player__active {
   background-color: #f7f7f7;
+}
+.player__active h2 {
+  font-weight: 300;
+}
+.player__active p {
+  font-weight: 300;
 }
 
 .options {
@@ -34,15 +68,26 @@
   width: 50%;
   margin: auto;
 }
+.options .option button {
+  letter-spacing: 0.2vw;
+  font-size: 1vw;
+}
+.options .option button i {
+  color: #eb4d4c;
+  font-weight: 300;
+  font-size: 1.3vw;
+  margin-right: 0.7vw;
+}
 
 .line1 {
   height: 20vh;
+  padding-top: 2vh;
 }
 .line2 {
   height: 50vh;
 }
 .line3 {
-  height: 12.5vh;
+  min-height: 12.5vh;
 }
 
 /*# sourceMappingURL=style.css.map */

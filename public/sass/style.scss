@@ -16,6 +16,10 @@ $textDark: #494949;
   background-color: $white;
 }
 
+.phone-instructions{
+  display: none;
+}
+
 .player {
   height: 100vh;
   width: 50vw;
@@ -92,5 +96,53 @@ $textDark: #494949;
   }
   &3 {
     min-height: 12.5vh;
+  }
+}
+
+/* Rotate your phone animation */
+@media only screen and (orientation: portrait) {
+  .phone,
+  .message {
+    display: block;
+  }
+  html,
+  body {
+    background: black;
+    height: 100%;
+    width: 100%;
+  }
+  main {
+    display: none;
+  }
+  .phone-instructions {
+    margin-top: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .phone {
+    height: 50px;
+    width: 100px;
+    border: 3px solid rgb(240, 237, 237);
+    border-radius: 10px;
+    animation: rotate 1.5s ease-in-out infinite alternate;
+  }
+  .message {
+    color: white;
+    font-size: 1em;
+    margin-top: 40px;
+    /* display: none; */
+  }
+  @keyframes rotate {
+    0% {
+      transform: rotate(-90deg);
+    }
+    50% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(0deg);
+    }
   }
 }

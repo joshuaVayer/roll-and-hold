@@ -1,0 +1,48 @@
+/*Colors*/
+/*Font*/
+.wrapper {
+  width: 100vw;
+  height: 100vh;
+  background-color: #ffffff;
+}
+
+.player {
+  height: 100vh;
+  width: 50vw;
+}
+.player-details {
+  width: 50%;
+  margin: auto;
+}
+.player-hand {
+  width: 25%;
+  margin: auto;
+  background-color: #eb4d4c;
+}
+.player__active {
+  background-color: #f7f7f7;
+}
+
+.options {
+  position: absolute;
+  top: 0;
+  left: 35%;
+  height: 100vh;
+  width: 30vw;
+}
+.options .option {
+  width: 50%;
+  margin: auto;
+}
+
+.line1 {
+  height: 20vh;
+}
+.line2 {
+  height: 50vh;
+}
+.line3 {
+  height: 12.5vh;
+}
+
+/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,53 @@
+/*Colors*/
+$main: #eb4d4c;
+$white: #ffffff;
+$grey: #f7f7f7;
+/*Font*/
+
+.wrapper {
+  width: 100vw;
+  height: 100vh;
+  background-color: $white;
+}
+
+.player {
+  height: 100vh;
+  width: 50vw;
+  &-details {
+    width: 50%;
+    margin: auto;
+  }
+  &-hand {
+    width: 25%;
+    margin: auto;
+    background-color: $main;
+
+  }
+  &__active {
+    background-color: $grey;
+  }
+}
+
+.options {
+  position: absolute;
+  top: 0;
+  left: 35%;
+  height: 100vh;
+  width: 30vw;
+  .option {
+    width: 50%;
+    margin: auto;
+  }
+}
+
+.line {
+  &1 {
+    height: 20vh;
+  }
+  &2 {
+    height: 50vh;
+  }
+  &3 {
+    height: 12.5vh;
+  }
+}

@@ -2,6 +2,7 @@
 $main: #eb4d4c;
 $white: #ffffff;
 $lightgrey: #f7f7f7;
+$grey: #e4e3e3;
 $textDark: #494949;
 /*Font*/
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700&display=swap");
@@ -10,14 +11,23 @@ $textDark: #494949;
   font-weight: 400;
   color: $textDark;
 }
+
+.line {
+  &1 {
+    height: 20vh;
+    padding-top: 2vh;
+  }
+  &2 {
+    height: 50vh;
+  }
+  &3 {
+    min-height: 12.5vh;
+  }
+}
 .wrapper {
   width: 100vw;
   height: 100vh;
-  background-color: $white;
-}
-
-.phone-instructions{
-  display: none;
+  background-color: $lightgrey;
 }
 
 .player {
@@ -54,7 +64,7 @@ $textDark: #494949;
     }
   }
   &__active {
-    background-color: $lightgrey;
+    background-color: $grey;
     h2 {
       font-weight: 300;
     }
@@ -83,23 +93,32 @@ $textDark: #494949;
         margin-right: 0.7vw;
       }
     }
+    .dice {
+      width: 10vw;
+      height: 10vw;
+      margin: auto;
+      background-image: url('../img/dice.svg');
+      background-position: center center;
+      background-size: contain;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      img{
+      width: 95%;
+      height: 95%;
+      margin: auto;
+    }
+    }
+    
   }
 }
 
-.line {
-  &1 {
-    height: 20vh;
-    padding-top: 2vh;
-  }
-  &2 {
-    height: 50vh;
-  }
-  &3 {
-    min-height: 12.5vh;
-  }
-}
+
 
 /* Rotate your phone animation */
+.phone-instructions{
+  display: none;
+}
 @media only screen and (orientation: portrait) {
   .phone,
   .message {

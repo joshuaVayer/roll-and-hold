@@ -47,6 +47,7 @@ const resetGame = () => {
 }
 
 
+//Roll functions
 const roll = () => {
     getFace();
     if (faceValue === 1) {
@@ -74,6 +75,7 @@ const updateHands = () => {
 const isWinner = () => (val(plrOneHand) + val(plrOneCumulated) >= 100 || val(plrTwoHand) + val(plrTwoCumulated) >= 100) ? stopGame() : null;
 
 
+//Hold functions
 const hold = () => { updateCumulates(); swapPlayer() };
 
 const swapPlayer = () => {

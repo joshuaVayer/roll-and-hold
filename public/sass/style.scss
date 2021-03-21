@@ -1,10 +1,26 @@
-/*Colors*/
+/*
+1-Colors
+2-Font
+3-Grid
+4-Players
+5-Dice and buttons
+6-Modals
+7-Responsive
+*/
+
+
+/*
+1-Colors
+*/
 $main: #eb4d4c;
 $white: #ffffff;
 $lightgrey: #f7f7f7;
 $grey: #e4e3e3;
 $textDark: #494949;
-/*Font*/
+
+/*
+2-Font
+*/
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700&display=swap");
 * {
   font-family: "Lato", sans-serif;
@@ -12,6 +28,9 @@ $textDark: #494949;
   color: $textDark;
 }
 
+/*
+3-Grid
+*/
 .line {
   &1 {
     height: 20vh;
@@ -30,6 +49,9 @@ $textDark: #494949;
   background-color: $lightgrey;
 }
 
+/*
+4-Players
+*/
 .player {
   height: 100vh;
   width: 50vw;
@@ -55,6 +77,7 @@ $textDark: #494949;
       font-size: 1vw;
       letter-spacing: 0.2vw;
       margin-bottom: 0;
+      font-weight: 300;
     }
     p {
       font-size: 3vw;
@@ -65,15 +88,18 @@ $textDark: #494949;
   }
   &__active {
     background-color: $grey;
-    h2 {
-      font-weight: 300;
+    h2,p {
+      font-weight:300;
     }
-    p {
-      font-weight: 300;
+    h4 {
+      font-weight: 400;
     }
   }
 }
 
+/*
+5-Dice and buttons
+*/
 .options {
   position: absolute;
   top: 0;
@@ -112,6 +138,9 @@ $textDark: #494949;
   }
 }
 
+/*
+6-Modals
+*/
 .modals {
   .rules-modal {
     .modal-button {
@@ -126,20 +155,20 @@ $textDark: #494949;
   }
 }
 
-/* Rotate your phone animation */
+/* 
+7-Responsive
+*/
 .phone-instructions {
   display: none;
 }
 @media only screen and (orientation: portrait) {
-  .phone,
-  .message {
+  .phone,.message {
     display: block;
   }
   main, .modals {
     display: none;
   }
-  html,
-  body {
+  html,body {
     background: $lightgrey;
     height: 100%;
     width: 100%;

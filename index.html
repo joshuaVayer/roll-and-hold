@@ -6,10 +6,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description"
-        content="Le projet FITT est une association de prévention sur les risques des réseaux sociaux. Nous somme aussi là pour soutenir les victimes de harcélement " />
+        content="Roll & hold is a educational project developed with Vanilia JS" />
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="public/img/favicon.png">
+
     <!-- CSS reset file -->
     <link rel="stylesheet" href="public/css/reset.css">
     <!-- Bootstrap CSS -->
@@ -20,9 +21,12 @@
     <link rel="stylesheet" href="public/css/style.css">
 
     <title>Roll & hold</title>
-</head>
 
+</head>
 <body>
+    <!-- 
+        Vertical screens instructions
+     -->
     <div class="phone-instructions">
         <div class="phone">
         </div>
@@ -30,50 +34,84 @@
             Please rotate your device, to play <span>Roll and Hold !</span> 
         </div>
     </div>
+    <!-- 
+        Game interface
+     -->
     <main class="wrapper container-fluid text-center">
+        <!-- 
+            Players columns 
+         -->
         <div class="players row">
             <div id="playerOne" class="player player__active col">
                 <div class="line1"></div>
-                <div class="player-details line2">
-                    <h2>PLAYER 1</h2>
-                    <p id="plrOneCumulated">0</p>
-                </div>
+                    <div class="player-details line2">
+                        <h2>PLAYER 1</h2>
+                        <p id="plrOneCumulated">
+                            0
+                        </p>
+                    </div>
                 <div class="player-hand line3">
-                    <h4 class="pt-2">CURRENT</h4>
-                    <p id="plrOneHand">0</p>
+                    <h4 class="current pt-2">CURRENT</h4>
+                    <p id="plrOneHand">
+                        0
+                    </p>
                 </div>
             </div>
-
-            <div id="playerTwo" class="player player__two col">
+            <div id="playerTwo" class="player col">
                 <div class="line1"></div>
-                <div class="player-details line2">
-                    <h2>PLAYER 2</h2>
-                    <p id="plrTwoCumulated">0</p>
-                </div>
+                    <div class="player-details line2">
+                        <h2>PLAYER 2</h2>
+                        <p id="plrTwoCumulated">
+                            0
+                        </p>
+                    </div>
                 <div class="player-hand line3">
-                    <h4 class="pt-2">CURRENT</h4>
-                    <p id="plrTwoHand">0</p>
+                    <h4 class="current pt-2">CURRENT</h4>
+                    <p id="plrTwoHand">
+                        0
+                    </p>
                 </div>
             </div>
         </div>
+        <!-- 
+            Buttons and dice column
+         -->
         <div class="options">
-            <div class=" option option__new-game line1">
-                <button id="newGameBtn"><i class="bi bi-plus-circle"></i>NEW GAME</button>
+            <div class="option line1">
+                <button id="newGameBtn">
+                    <i class="bi bi-plus-circle"></i>NEW GAME
+                </button>
             </div>
-            <div class=" option option__dice line2">
+            <div class="option line2">
                 <div class="dice">
-                    <img id="diceFace" src="public/img/faces/six.svg" alt="Three">
+                    <img 
+                    id="diceFace" 
+                    src="public/img/faces/six.svg" 
+                    alt="Dice face">
                 </div>
             </div>
-            <div class=" option option__hold-roll line3">
-                <p><button id="rollBtn"><i class="bi bi-arrow-repeat"></i>ROLL DICE</button></p>
-                <p><button id="holdBtn"><i class="bi bi-box-arrow-in-down"></i>HOLD</button></p>
+            <div class="option line3">
+                <p>
+                    <button id="rollBtn">
+                        <i class="bi bi-arrow-repeat"></i>ROLL DICE
+                    </button>
+                </p>
+                <p>
+                    <button id="holdBtn">
+                        <i class="bi bi-box-arrow-in-down"></i>HOLD
+                    </button>
+                </p>
             </div>
         </div>
+
     </main>
-
+    <!-- 
+        Modals box
+     -->
     <div class="modals">
-
+        <!-- 
+            Rules modal
+         -->
         <div class="rules-modal">
             <button type="button" class="modal-button" data-bs-toggle="modal" data-bs-target="#rulesModal"><i class="bi bi-info-circle"></i></button>
             <div class="modal fade" id="rulesModal" tabindex="-1" aria-labelledby="rulesModalLabel" aria-hidden="true">
@@ -86,18 +124,24 @@
                         <div class="modal-body">
                             <p>Rules are quite simple :
                             <ul>
-                                <li>The first player to hold 100 points in his global score wins.</li>
-                                <li>To do so, roll the dice. You can roll it as many times as you want.
+                                <li>
+                                    The first player to hold 100 points in his global score wins.
+                                </li>
+                                <li>
+                                    To do so, roll the dice. You can roll it as many times as you want.
                                     The result adds up in your current score. However, if you roll the dice
                                     and obtain 1, your current score is lost, and it's the end of your turn. <br />
                                     If you are happy with your current score, you can hold it by clicking the
                                     'Hold' button, to add it to your global score, and it's the end of your
                                     turn.
                                 </li>
-                                <li>Try to be strategic with your rolls, and don't be too greedy !</li>
+                                <li>
+                                    Try to be strategic with your rolls, and don't be too greedy !
+                                </li>
                                 <li>To close this dialog box and start playing, click the 'X' on the top-right
                                     corner.
                                 </li>
+                            </ul>
                                 <strong class="pt-2">Good luck and have fun.</strong>
                             </p>
                         </div>
@@ -105,7 +149,9 @@
                 </div>
             </div>
         </div>
-        
+        <!-- 
+            Winner & end game modal
+         -->
         <div class="winner-modal">
             <div class="modal fade" id="winnerModal" tabindex="-1" aria-labelledby="winnerModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
@@ -115,7 +161,8 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body text-center">
-                            <p><strong><span id='winner'>PLAYER 1</span></strong> is the winner !</p>
+                            <p>
+                                <strong><span id='winner'>PLAYER 1</span></strong> is the winner !</p>
                             <p>&#128079 &#128079 &#128079</p>
                         </div>
                     </div>
@@ -125,7 +172,9 @@
 
     </div>
 
-    </div><!-- JavaScript -->
+    <!-- 
+        JavaScript 
+    -->
     <script 
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
@@ -139,6 +188,6 @@
     <script 
         src="public/js/main.js">
     </script>
-</body>
 
+</body>
 </html>

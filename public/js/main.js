@@ -1,5 +1,5 @@
 //--------------------------
-// Variables 
+// 1 - Variables 
 //--------------------------
 
 const faces = ['one', 'two', 'three', 'four', 'five', 'six'];
@@ -7,28 +7,40 @@ const path = 'public/img/faces/';
 let face = '';
 let faceValue = 0;
 
-const playerOne = document.getElementById('playerOne');
-const playerTwo = document.getElementById('playerTwo');
-const plrOneHand = document.getElementById('plrOneHand');
-const plrTwoHand = document.getElementById('plrTwoHand');
-const plrOneCumulated = document.getElementById('plrOneCumulated');
-const plrTwoCumulated = document.getElementById('plrTwoCumulated');
-const winnerModal = document.getElementById('winner');
+const Players = [
+    {
+        id: 'playerOne',
+        name: 'PLAYER 1',
+        cumulated: 0,
+        hand: 0,
+        handId: 'plrOneHand',
+        cumulatedId: 'plrOneCumulated'
+    },
+    {
+        id: 'playerTwo',
+        name: 'PLAYER 2',
+        cumulated: 0,
+        hand: 0,
+        handId: 'plrTwoHand',
+        cumulatedId: 'plrTwoCumulated'
+    }
+];
 
-let currentPlayer = playerOne;
-let winner = (currentPlayer = playerOne) ? 'PLAYER 1' : 'PLAYER 2';
+// Active player
+let p = 0;
 
-const val = (e) => parseInt(e.innerHTML);
 //--------------------------
-// Buttons 
+// 2 - Selectors 
 //--------------------------
 
 const newGameBtn = document.getElementById('newGameBtn');
 const holdBtn = document.getElementById('holdBtn');
 const rollBtn = document.getElementById('rollBtn');
+const winnerModal = document.getElementById('winner');
+const doc = (id) => document.getElementById(id);
 
 //--------------------------
-// Events listeners 
+// 3 - Events listeners 
 //--------------------------
 
 newGameBtn.addEventListener('click', () => resetGame());
@@ -36,25 +48,17 @@ holdBtn.addEventListener('click', () => hold());
 rollBtn.addEventListener('click', () => roll());
 
 //--------------------------
-// Functions
+// 4 - Functions
+// 4.1 - Functions (Roll)
 //--------------------------
-
-const resetGame = () => {
-    plrOneCumulated.innerHTML = '0';
-    plrOneHand.innerHTML = '0';
-    plrTwoCumulated.innerHTML = '0';
-    plrTwoHand.innerHTML = '0';
-}
-
-
-//Roll functions
 const roll = () => {
     getFace();
     if (faceValue === 1) {
-        plrOneHand.innerHTML = '0'; plrTwoHand.innerHTML = '0';
+        doc(Players[p].handId).innerHTML = '0';
+        Players[p].hand = 0;
         swapPlayer();
     } else {
-        updateHands();
+        updateHand();
     }
 }
 
@@ -62,44 +66,39 @@ const getFace = () => {
     const random = Math.floor(Math.random() * faces.length);
     face = faces[random];
     faceValue = random + 1;
-    document.getElementById("diceFace").src = `${path + face}.svg`;
+    doc("diceFace").src = `${path + face}.svg`;
 }
-const updateHands = () => {
-    if (currentPlayer == playerOne) {
-        plrOneHand.innerHTML = val(plrOneHand) + faceValue;
-    } else {
-        plrTwoHand.innerHTML = val(plrTwoHand) + faceValue;
-    }
+const updateHand = () => {
+    Players[p].hand = Players[p].hand + faceValue;
+    doc(Players[p].handId).innerHTML = Players[p].hand;
     isWinner()
 }
-const isWinner = () => (val(plrOneHand) + val(plrOneCumulated) >= 100 || val(plrTwoHand) + val(plrTwoCumulated) >= 100) ? stopGame() : null;
-
-
-//Hold functions
+//--------------------------
+// 4.2 - Functions (Hold)
+//--------------------------
 const hold = () => { updateCumulates(); swapPlayer() };
 
-const swapPlayer = () => {
-    if (currentPlayer == playerOne) {
-        playerOne.classList.remove('class', 'player__active');
-        playerTwo.classList.add('class', 'player__active');
-        currentPlayer = playerTwo;
-    } else {
-        playerOne.classList.add('class', 'player__active');
-        playerTwo.classList.remove('class', 'player__active');
-        currentPlayer = playerOne;
-    }
-}
 const updateCumulates = () => {
-    if (val(plrOneHand) > 0) {
-        plrOneCumulated.innerHTML = val(plrOneCumulated) + val(plrOneHand);
-        plrOneHand.innerHTML = 0;
-    }
-    if (val(plrTwoHand) > 0) {
-        plrTwoCumulated.innerHTML = val(plrTwoCumulated) + val(plrTwoHand);
-        plrTwoHand.innerHTML = 0;
-    }
+    Players[p].cumulated = Players[p].cumulated + Players[p].hand;
+    doc(Players[p].cumulatedId).innerHTML = Players[p].cumulated;
+    Players[p].hand = 0;
+    doc(Players[p].handId).innerHTML = '0';
 }
-const stopGame = () => {
-    winnerModal.innerHTML = winner;
-    $('#winnerModal').modal('show')
+const swapPlayer = () => {
+    doc(Players[p].id).classList.remove('class', 'player__active');
+    (p === Players.length - 1) ? p = 0 : ++p;
+    doc(Players[p].id).classList.add('class', 'player__active');
 }
+//--------------------------
+// 4.3 - Functions (Others)
+//--------------------------
+const resetGame = () => {
+    Players.forEach( player => {
+        player.hand = 0;
+        player.cumulated = 0;
+        doc(player.cumulatedId).innerHTML = player.hand;
+        doc(player.handId).innerHTML = player.cumulated;
+    })
+};
+const isWinner = () => ( Players[p].hand + Players[p].cumulated >= 100 ) ? stopGame() : null;
+const stopGame = () => { winnerModal.innerHTML = Players[p].name; $('#winnerModal').modal('show') }

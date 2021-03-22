@@ -7,7 +7,7 @@ const path = 'public/img/faces/';
 let face = '';
 let faceValue = 0;
 
-const Players = [
+const players = [
     {
         id: 'playerOne',
         name: 'PLAYER 1',
@@ -54,8 +54,8 @@ rollBtn.addEventListener('click', () => roll());
 const roll = () => {
     getFace();
     if (faceValue === 1) {
-        doc(Players[p].handId).innerHTML = '0';
-        Players[p].hand = 0;
+        doc(players[p].handId).innerHTML = '0';
+        players[p].hand = 0;
         swapPlayer();
     } else {
         updateHand();
@@ -69,8 +69,8 @@ const getFace = () => {
     doc("diceFace").src = `${path + face}.svg`;
 }
 const updateHand = () => {
-    Players[p].hand = Players[p].hand + faceValue;
-    doc(Players[p].handId).innerHTML = Players[p].hand;
+    players[p].hand = players[p].hand + faceValue;
+    doc(players[p].handId).innerHTML = players[p].hand;
     isWinner()
 }
 //--------------------------
@@ -79,26 +79,26 @@ const updateHand = () => {
 const hold = () => { updateCumulates(); swapPlayer() };
 
 const updateCumulates = () => {
-    Players[p].cumulated = Players[p].cumulated + Players[p].hand;
-    doc(Players[p].cumulatedId).innerHTML = Players[p].cumulated;
-    Players[p].hand = 0;
-    doc(Players[p].handId).innerHTML = '0';
+    players[p].cumulated = players[p].cumulated + players[p].hand;
+    doc(players[p].cumulatedId).innerHTML = players[p].cumulated;
+    players[p].hand = 0;
+    doc(players[p].handId).innerHTML = '0';
 }
 const swapPlayer = () => {
-    doc(Players[p].id).classList.remove('class', 'player__active');
-    (p === Players.length - 1) ? p = 0 : ++p;
-    doc(Players[p].id).classList.add('class', 'player__active');
+    doc(players[p].id).classList.remove('class', 'player__active');
+    (p === players.length - 1) ? p = 0 : ++p;
+    doc(players[p].id).classList.add('class', 'player__active');
 }
 //--------------------------
 // 4.3 - Functions (Others)
 //--------------------------
 const resetGame = () => {
-    Players.forEach( player => {
+    players.forEach( player => {
         player.hand = 0;
         player.cumulated = 0;
         doc(player.cumulatedId).innerHTML = player.hand;
         doc(player.handId).innerHTML = player.cumulated;
     })
 };
-const isWinner = () => ( Players[p].hand + Players[p].cumulated >= 100 ) ? stopGame() : null;
-const stopGame = () => { winnerModal.innerHTML = Players[p].name; $('#winnerModal').modal('show') }
+const isWinner = () => ( players[p].hand + players[p].cumulated >= 100 ) ? stopGame() : null;
+const stopGame = () => { winnerModal.innerHTML = players[p].name; $('#winnerModal').modal('show') }
